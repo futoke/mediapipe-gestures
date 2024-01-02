@@ -1,0 +1,488 @@
+[12.31.2023 21:33:36 | ERROR]: Task exception was never retrieved
+future: <Task finished name='Task-4' coro=<bg_worker() done, defined at /home/ichiro/docker-gestures/mediapipe/main.py:107> exception=ConnectionRefusedError(111, "Connect call failed ('127.0.0.1', 8002)")>
+Traceback (most recent call last):
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/protocol.py", line 963, in transfer_data
+    message = await self.read_message()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/protocol.py", line 1033, in read_message
+    frame = await self.read_data_frame(max_size=self.max_size)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/protocol.py", line 1108, in read_data_frame
+    frame = await self.read_frame(max_size)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/protocol.py", line 1165, in read_frame
+    frame = await Frame.read(
+            ^^^^^^^^^^^^^^^^^
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/framing.py", line 68, in read
+    data = await reader(2)
+           ^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/streams.py", line 727, in readexactly
+    raise exceptions.IncompleteReadError(incomplete, n)
+asyncio.exceptions.IncompleteReadError: 0 bytes read on a total of 2 expected bytes
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ichiro/docker-gestures/mediapipe/main.py", line 127, in bg_worker
+    msg = await ws.recv()
+          ^^^^^^^^^^^^^^^
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/protocol.py", line 568, in recv
+    await self.ensure_open()
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/protocol.py", line 939, in ensure_open
+    raise self.connection_closed_exc()
+websockets.exceptions.ConnectionClosedError: no close frame received or sent
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ichiro/docker-gestures/mediapipe/main.py", line 135, in bg_worker
+    ws = await websockets.connect(STREAM_URL, ping_interval=None)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/client.py", line 647, in __await_impl_timeout__
+    return await self.__await_impl__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/client.py", line 651, in __await_impl__
+    _transport, _protocol = await self._create_connection()
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1085, in create_connection
+    raise exceptions[0]
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1069, in create_connection
+    sock = await self._connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 973, in _connect_sock
+    await self.sock_connect(sock, address)
+  File "/usr/lib/python3.11/asyncio/selector_events.py", line 634, in sock_connect
+    return await fut
+           ^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/selector_events.py", line 674, in _sock_connect_cb
+    raise OSError(err, f'Connect call failed {address}')
+ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 8002)
+[12.31.2023 21:34:38 | INFO]: Running on http://0.0.0.0:8888 (CTRL + C to quit)
+[12.31.2023 21:34:38 | ERROR]: No connection to stream server (ws://localhost:8002/websocket). Trying to reconnect...
+[12.31.2023 21:34:48 | ERROR]: No connection to stream server (ws://localhost:8002/websocket). Trying to reconnect...
+[12.31.2023 21:35:00 | INFO]: Thumb_Up
+[12.31.2023 21:35:01 | INFO]: Closed_Fist
+[12.31.2023 21:35:01 | INFO]: Pointing_Up
+[12.31.2023 21:35:13 | INFO]: Open_Palm
+[12.31.2023 21:35:15 | INFO]: Thumb_Up
+[12.31.2023 21:35:16 | INFO]: Pointing_Up
+[12.31.2023 21:35:18 | INFO]: Closed_Fist
+[12.31.2023 21:35:18 | INFO]: Open_Palm
+[12.31.2023 21:35:20 | INFO]: Pointing_Up
+[12.31.2023 21:35:20 | INFO]: Victory
+[12.31.2023 21:35:22 | INFO]: Closed_Fist
+[12.31.2023 21:35:23 | INFO]: ILoveYou
+[12.31.2023 21:35:24 | INFO]: Closed_Fist
+[12.31.2023 21:35:26 | INFO]: ILoveYou
+[12.31.2023 21:35:27 | INFO]: Closed_Fist
+[12.31.2023 21:35:33 | INFO]: Open_Palm
+[12.31.2023 21:35:36 | INFO]: Closed_Fist
+[12.31.2023 21:35:56 | ERROR]: Task exception was never retrieved
+future: <Task finished name='Task-4' coro=<bg_worker() done, defined at /home/ichiro/docker-gestures/mediapipe/main.py:107> exception=ConnectionClosedError(None, None, None)>
+Traceback (most recent call last):
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/protocol.py", line 963, in transfer_data
+    message = await self.read_message()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/protocol.py", line 1033, in read_message
+    frame = await self.read_data_frame(max_size=self.max_size)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/protocol.py", line 1108, in read_data_frame
+    frame = await self.read_frame(max_size)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/protocol.py", line 1165, in read_frame
+    frame = await Frame.read(
+            ^^^^^^^^^^^^^^^^^
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/framing.py", line 68, in read
+    data = await reader(2)
+           ^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/streams.py", line 727, in readexactly
+    raise exceptions.IncompleteReadError(incomplete, n)
+asyncio.exceptions.IncompleteReadError: 0 bytes read on a total of 2 expected bytes
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ichiro/docker-gestures/mediapipe/main.py", line 140, in bg_worker
+    msg = await ws.recv()
+          ^^^^^^^^^^^^^^^
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/protocol.py", line 568, in recv
+    await self.ensure_open()
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/protocol.py", line 939, in ensure_open
+    raise self.connection_closed_exc()
+websockets.exceptions.ConnectionClosedError: no close frame received or sent
+[12.31.2023 21:36:50 | INFO]: Running on http://0.0.0.0:8888 (CTRL + C to quit)
+[12.31.2023 21:36:52 | INFO]: Open_Palm
+[12.31.2023 21:36:58 | ERROR]: Stream server connection lost (ws://localhost:8002/websocket). Trying to reconnect...
+[12.31.2023 21:37:08 | ERROR]: Task exception was never retrieved
+future: <Task finished name='Task-4' coro=<bg_worker() done, defined at /home/ichiro/docker-gestures/mediapipe/main.py:107> exception=ConnectionRefusedError(111, "Connect call failed ('127.0.0.1', 8002)")>
+Traceback (most recent call last):
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/protocol.py", line 963, in transfer_data
+    message = await self.read_message()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/protocol.py", line 1033, in read_message
+    frame = await self.read_data_frame(max_size=self.max_size)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/protocol.py", line 1108, in read_data_frame
+    frame = await self.read_frame(max_size)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/protocol.py", line 1165, in read_frame
+    frame = await Frame.read(
+            ^^^^^^^^^^^^^^^^^
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/framing.py", line 68, in read
+    data = await reader(2)
+           ^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/streams.py", line 727, in readexactly
+    raise exceptions.IncompleteReadError(incomplete, n)
+asyncio.exceptions.IncompleteReadError: 0 bytes read on a total of 2 expected bytes
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ichiro/docker-gestures/mediapipe/main.py", line 127, in bg_worker
+    msg = await ws.recv()
+          ^^^^^^^^^^^^^^^
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/protocol.py", line 568, in recv
+    await self.ensure_open()
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/protocol.py", line 939, in ensure_open
+    raise self.connection_closed_exc()
+websockets.exceptions.ConnectionClosedError: no close frame received or sent
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ichiro/docker-gestures/mediapipe/main.py", line 138, in bg_worker
+    ws = await websockets.connect(STREAM_URL, ping_interval=None)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/client.py", line 647, in __await_impl_timeout__
+    return await self.__await_impl__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/client.py", line 651, in __await_impl__
+    _transport, _protocol = await self._create_connection()
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1085, in create_connection
+    raise exceptions[0]
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1069, in create_connection
+    sock = await self._connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 973, in _connect_sock
+    await self.sock_connect(sock, address)
+  File "/usr/lib/python3.11/asyncio/selector_events.py", line 634, in sock_connect
+    return await fut
+           ^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/selector_events.py", line 674, in _sock_connect_cb
+    raise OSError(err, f'Connect call failed {address}')
+ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 8002)
+[12.31.2023 21:40:41 | INFO]: Running on http://0.0.0.0:8888 (CTRL + C to quit)
+[12.31.2023 21:40:41 | INFO]: Thumb_Up
+[12.31.2023 21:40:45 | INFO]: Pointing_Up
+[12.31.2023 21:40:46 | INFO]: Open_Palm
+[12.31.2023 21:40:47 | INFO]: Pointing_Up
+[12.31.2023 21:40:49 | ERROR]: Stream server connection lost (ws://localhost:8002/websocket). Trying to reconnect...
+[12.31.2023 21:40:59 | ERROR]: Task exception was never retrieved
+future: <Task finished name='Task-4' coro=<bg_worker() done, defined at /home/ichiro/docker-gestures/mediapipe/main.py:107> exception=ConnectionRefusedError(111, "Connect call failed ('127.0.0.1', 8002)")>
+Traceback (most recent call last):
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/protocol.py", line 963, in transfer_data
+    message = await self.read_message()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/protocol.py", line 1033, in read_message
+    frame = await self.read_data_frame(max_size=self.max_size)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/protocol.py", line 1108, in read_data_frame
+    frame = await self.read_frame(max_size)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/protocol.py", line 1165, in read_frame
+    frame = await Frame.read(
+            ^^^^^^^^^^^^^^^^^
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/framing.py", line 68, in read
+    data = await reader(2)
+           ^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/streams.py", line 727, in readexactly
+    raise exceptions.IncompleteReadError(incomplete, n)
+asyncio.exceptions.IncompleteReadError: 0 bytes read on a total of 2 expected bytes
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ichiro/docker-gestures/mediapipe/main.py", line 126, in bg_worker
+    msg = await ws.recv()
+         ^^^^^^^^^^^^^^^
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/protocol.py", line 568, in recv
+    await self.ensure_open()
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/protocol.py", line 939, in ensure_open
+    raise self.connection_closed_exc()
+websockets.exceptions.ConnectionClosedError: no close frame received or sent
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ichiro/docker-gestures/mediapipe/main.py", line 186, in bg_worker
+    ws = await websockets.connect(STREAM_URL, ping_interval=None)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/client.py", line 647, in __await_impl_timeout__
+    return await self.__await_impl__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/client.py", line 651, in __await_impl__
+    _transport, _protocol = await self._create_connection()
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1085, in create_connection
+    raise exceptions[0]
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1069, in create_connection
+    sock = await self._connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 973, in _connect_sock
+    await self.sock_connect(sock, address)
+  File "/usr/lib/python3.11/asyncio/selector_events.py", line 634, in sock_connect
+    return await fut
+           ^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/selector_events.py", line 674, in _sock_connect_cb
+    raise OSError(err, f'Connect call failed {address}')
+ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 8002)
+[12.31.2023 21:42:21 | INFO]: Running on http://0.0.0.0:8888 (CTRL + C to quit)
+[12.31.2023 21:42:23 | INFO]: Thumb_Up
+[12.31.2023 21:42:25 | ERROR]: Stream server connection lost (ws://localhost:8002/websocket). Trying to reconnect...
+[12.31.2023 21:42:35 | ERROR]: Stream server connection lost (ws://localhost:8002/websocket). Trying to reconnect...
+[12.31.2023 21:42:45 | ERROR]: Stream server connection lost (ws://localhost:8002/websocket). Trying to reconnect...
+[12.31.2023 21:43:00 | INFO]: Pointing_Up
+[12.31.2023 21:43:01 | INFO]: Closed_Fist
+[12.31.2023 21:43:02 | INFO]: Thumb_Up
+[12.31.2023 21:43:03 | INFO]: Closed_Fist
+[12.31.2023 21:43:03 | INFO]: Open_Palm
+[12.31.2023 21:43:05 | INFO]: Pointing_Up
+[12.31.2023 21:45:53 | INFO]: Running on http://0.0.0.0:8888 (CTRL + C to quit)
+[12.31.2023 21:45:54 | INFO]: Closed_Fist
+[12.31.2023 21:45:57 | INFO]: Pointing_Up
+[12.31.2023 21:45:58 | INFO]: Closed_Fist
+[12.31.2023 21:45:59 | INFO]: Pointing_Up
+[12.31.2023 21:46:00 | INFO]: Closed_Fist
+[12.31.2023 21:46:01 | INFO]: Open_Palm
+[12.31.2023 21:46:02 | INFO]: Pointing_Up
+[12.31.2023 21:46:04 | INFO]: Thumb_Up
+[12.31.2023 21:46:07 | INFO]: Open_Palm
+[12.31.2023 21:46:08 | INFO]: Closed_Fist
+[12.31.2023 21:46:09 | INFO]: Pointing_Up
+[12.31.2023 21:46:11 | INFO]: Closed_Fist
+[12.31.2023 21:46:12 | INFO]: Pointing_Up
+[12.31.2023 21:46:15 | INFO]: Closed_Fist
+[12.31.2023 21:46:16 | INFO]: Pointing_Up
+[12.31.2023 21:46:17 | INFO]: Closed_Fist
+[12.31.2023 21:46:19 | INFO]: Open_Palm
+[12.31.2023 21:46:21 | INFO]: Pointing_Up
+[12.31.2023 21:46:22 | INFO]: Thumb_Up
+[12.31.2023 21:46:23 | INFO]: Pointing_Up
+[12.31.2023 21:46:24 | INFO]: Closed_Fist
+[12.31.2023 21:46:26 | INFO]: Pointing_Up
+[12.31.2023 21:46:28 | INFO]: Closed_Fist
+[12.31.2023 21:46:29 | INFO]: Pointing_Up
+[12.31.2023 21:46:30 | INFO]: Closed_Fist
+[12.31.2023 21:46:31 | INFO]: Pointing_Up
+[12.31.2023 21:46:33 | INFO]: Closed_Fist
+[12.31.2023 21:46:34 | INFO]: Pointing_Up
+[12.31.2023 21:46:35 | INFO]: Closed_Fist
+[12.31.2023 21:46:36 | INFO]: Pointing_Up
+[12.31.2023 21:46:38 | INFO]: Thumb_Up
+[12.31.2023 21:46:39 | INFO]: Open_Palm
+[12.31.2023 21:46:40 | INFO]: Pointing_Up
+[12.31.2023 21:46:42 | INFO]: Closed_Fist
+[12.31.2023 21:46:43 | INFO]: Pointing_Up
+[12.31.2023 21:46:44 | INFO]: Closed_Fist
+[12.31.2023 21:46:46 | INFO]: Pointing_Up
+[12.31.2023 21:46:47 | INFO]: Closed_Fist
+[12.31.2023 21:46:49 | INFO]: Open_Palm
+[12.31.2023 21:46:50 | INFO]: Pointing_Up
+[12.31.2023 21:46:51 | INFO]: Thumb_Up
+[12.31.2023 21:46:52 | INFO]: Pointing_Up
+[12.31.2023 21:46:53 | INFO]: Thumb_Up
+[12.31.2023 21:47:05 | INFO]: Running on http://0.0.0.0:8888 (CTRL + C to quit)
+[12.31.2023 21:47:07 | INFO]: Thumb_Up
+[12.31.2023 21:47:12 | INFO]: Closed_Fist
+[12.31.2023 21:47:14 | INFO]: Pointing_Up
+[12.31.2023 21:47:15 | INFO]: Closed_Fist
+[12.31.2023 21:47:15 | INFO]: Pointing_Up
+[12.31.2023 21:47:16 | INFO]: Closed_Fist
+[12.31.2023 21:47:20 | INFO]: Pointing_Up
+[12.31.2023 21:47:21 | INFO]: Open_Palm
+[12.31.2023 21:47:22 | INFO]: Thumb_Up
+[12.31.2023 21:47:23 | INFO]: Open_Palm
+[12.31.2023 21:47:24 | INFO]: Thumb_Up
+[12.31.2023 21:47:24 | INFO]: ILoveYou
+[12.31.2023 21:47:27 | INFO]: Closed_Fist
+[12.31.2023 21:47:27 | INFO]: Thumb_Up
+[12.31.2023 21:47:30 | INFO]: Closed_Fist
+[12.31.2023 21:47:32 | INFO]: Thumb_Up
+[12.31.2023 21:47:33 | INFO]: Closed_Fist
+[12.31.2023 21:47:35 | INFO]: Thumb_Up
+[12.31.2023 21:47:38 | INFO]: Closed_Fist
+[12.31.2023 21:47:40 | INFO]: Thumb_Up
+[12.31.2023 21:47:42 | INFO]: Closed_Fist
+[12.31.2023 21:47:43 | INFO]: Open_Palm
+[12.31.2023 21:47:46 | INFO]: Thumb_Up
+[12.31.2023 21:47:47 | INFO]: Open_Palm
+[12.31.2023 21:47:48 | INFO]: Thumb_Up
+[12.31.2023 21:47:49 | INFO]: Open_Palm
+[12.31.2023 21:47:50 | INFO]: Thumb_Up
+[12.31.2023 21:47:50 | INFO]: Open_Palm
+[12.31.2023 21:47:51 | INFO]: Pointing_Up
+[12.31.2023 21:47:52 | INFO]: Closed_Fist
+[12.31.2023 21:48:00 | INFO]: Pointing_Up
+[12.31.2023 21:48:04 | INFO]: Closed_Fist
+[12.31.2023 21:49:10 | INFO]: Running on http://0.0.0.0:8888 (CTRL + C to quit)
+[12.31.2023 21:49:11 | INFO]: Recognize Pointing_Up
+[12.31.2023 21:49:17 | INFO]: Recognize Closed_Fist
+[12.31.2023 21:49:22 | INFO]: Recognize Pointing_Up
+[12.31.2023 21:49:28 | INFO]: Recognize Victory
+[12.31.2023 21:49:33 | INFO]: Recognize Thumb_Up
+[12.31.2023 21:49:42 | INFO]: Recognize Pointing_Up
+[12.31.2023 21:50:53 | INFO]: Running on http://0.0.0.0:8888 (CTRL + C to quit)
+[12.31.2023 21:50:55 | INFO]: Recognize Pointing_Up
+[12.31.2023 21:50:58 | INFO]: Recognize Closed_Fist
+[12.31.2023 21:51:07 | ERROR]: Stream server connection lost (ws://localhost:8002/websocket). Trying to reconnect every 10 sec...
+[12.31.2023 21:51:17 | ERROR]: Stream server connection lost (ws://localhost:8002/websocket). Trying to reconnect every 10 sec...
+[12.31.2023 21:51:31 | INFO]: Recognize Thumb_Up
+[12.31.2023 21:51:34 | INFO]: Recognize Pointing_Up
+[12.31.2023 21:53:45 | INFO]: Recognize Thumb_Up
+[12.31.2023 21:55:49 | INFO]: Recognize Open_Palm
+[12.31.2023 21:55:52 | INFO]: Recognize Thumb_Up
+[12.31.2023 22:03:24 | INFO]: Recognize Closed_Fist
+[12.31.2023 23:16:29 | INFO]: Recognize Thumb_Up
+[12.31.2023 23:21:35 | INFO]: Recognize Thumb_Down
+[12.31.2023 23:22:02 | INFO]: Recognize Thumb_Up
+[12.31.2023 23:23:07 | INFO]: Recognize Closed_Fist
+[12.31.2023 23:23:16 | INFO]: Recognize Thumb_Up
+[12.31.2023 23:23:53 | INFO]: Recognize Open_Palm
+[12.31.2023 23:24:00 | INFO]: Recognize Thumb_Up
+[12.31.2023 23:24:03 | INFO]: Recognize Open_Palm
+[12.31.2023 23:26:34 | INFO]: Recognize Thumb_Up
+[12.31.2023 23:26:58 | INFO]: Recognize Open_Palm
+[12.31.2023 23:27:01 | INFO]: Recognize Pointing_Up
+[12.31.2023 23:27:04 | INFO]: Recognize Closed_Fist
+[12.31.2023 23:27:07 | INFO]: Recognize Open_Palm
+[12.31.2023 23:27:10 | INFO]: Recognize Closed_Fist
+[12.31.2023 23:27:13 | INFO]: Recognize Open_Palm
+[12.31.2023 23:27:16 | INFO]: Recognize Victory
+[12.31.2023 23:27:21 | INFO]: Recognize Thumb_Up
+[12.31.2023 23:27:25 | INFO]: Recognize Thumb_Down
+[12.31.2023 23:27:29 | INFO]: Recognize Pointing_Up
+[12.31.2023 23:27:32 | INFO]: Recognize Thumb_Up
+[12.31.2023 23:27:35 | INFO]: Recognize Thumb_Down
+[12.31.2023 23:27:46 | INFO]: Running on http://0.0.0.0:8888 (CTRL + C to quit)
+[12.31.2023 23:27:48 | INFO]: Recognize Thumb_Up
+[12.31.2023 23:27:50 | INFO]: Recognize Pointing_Up
+[12.31.2023 23:27:52 | INFO]: Recognize Victory
+[01.01.2024 00:23:41 | INFO]: Recognize Thumb_Down
+[01.01.2024 00:24:18 | INFO]: Recognize Thumb_Up
+[01.01.2024 00:25:35 | INFO]: Recognize Thumb_Down
+[01.01.2024 00:25:49 | INFO]: Recognize Closed_Fist
+[01.01.2024 00:25:52 | INFO]: Recognize Thumb_Down
+[01.01.2024 00:25:56 | INFO]: Recognize Closed_Fist
+[01.01.2024 00:27:27 | INFO]: Recognize Thumb_Up
+[01.01.2024 00:27:46 | INFO]: Recognize Pointing_Up
+[01.01.2024 00:27:50 | INFO]: Recognize Thumb_Up
+[01.01.2024 00:30:02 | INFO]: Recognize Closed_Fist
+[01.01.2024 00:30:05 | INFO]: Recognize Thumb_Up
+[01.01.2024 00:30:07 | INFO]: Recognize Pointing_Up
+[01.01.2024 00:30:28 | INFO]: Recognize Closed_Fist
+[01.01.2024 00:30:30 | INFO]: Recognize Pointing_Up
+[01.01.2024 00:32:18 | INFO]: Recognize Thumb_Up
+[01.01.2024 00:33:43 | INFO]: Recognize Closed_Fist
+[01.01.2024 00:33:45 | INFO]: Recognize Thumb_Down
+[01.01.2024 00:33:48 | INFO]: Recognize Closed_Fist
+[01.01.2024 00:33:52 | INFO]: Recognize Thumb_Up
+[01.01.2024 00:39:47 | INFO]: Recognize Closed_Fist
+[01.01.2024 00:41:11 | INFO]: Recognize Thumb_Down
+[01.01.2024 00:43:00 | INFO]: Recognize Closed_Fist
+[01.01.2024 00:43:10 | INFO]: Recognize Open_Palm
+[01.01.2024 00:45:16 | INFO]: Recognize Thumb_Up
+[01.01.2024 00:48:06 | INFO]: Recognize Thumb_Down
+[01.01.2024 00:52:18 | INFO]: Recognize Thumb_Up
+[01.01.2024 00:53:51 | INFO]: Recognize Open_Palm
+[01.01.2024 00:53:54 | INFO]: Recognize Thumb_Up
+[01.01.2024 01:00:33 | INFO]: Recognize Pointing_Up
+[01.01.2024 01:01:01 | INFO]: Recognize Thumb_Up
+[01.01.2024 01:03:29 | INFO]: Recognize Closed_Fist
+[01.01.2024 01:04:13 | INFO]: Recognize Thumb_Up
+[01.01.2024 01:04:15 | INFO]: Recognize Closed_Fist
+[01.01.2024 01:05:09 | INFO]: Recognize Thumb_Up
+[01.01.2024 01:09:37 | INFO]: Recognize Closed_Fist
+[01.01.2024 01:09:39 | INFO]: Recognize Thumb_Up
+[01.01.2024 01:09:41 | INFO]: Recognize Closed_Fist
+[01.01.2024 01:10:03 | INFO]: Recognize Pointing_Up
+[01.01.2024 01:10:05 | INFO]: Recognize Closed_Fist
+[01.01.2024 01:12:20 | INFO]: Recognize Thumb_Up
+[01.01.2024 01:12:22 | INFO]: Recognize Closed_Fist
+[01.01.2024 01:12:31 | INFO]: Recognize Thumb_Up
+[01.01.2024 01:12:35 | INFO]: Recognize Closed_Fist
+[01.01.2024 01:12:47 | INFO]: Recognize Thumb_Up
+[01.01.2024 01:12:49 | INFO]: Recognize Closed_Fist
+[01.01.2024 01:12:55 | INFO]: Recognize Thumb_Down
+[01.01.2024 01:13:04 | INFO]: Recognize Thumb_Up
+[01.01.2024 01:13:08 | INFO]: Recognize Closed_Fist
+[01.01.2024 01:13:11 | INFO]: Recognize Pointing_Up
+[01.01.2024 01:13:14 | INFO]: Recognize Closed_Fist
+[01.01.2024 01:13:27 | INFO]: Recognize Thumb_Up
+[01.01.2024 01:13:33 | INFO]: Recognize Closed_Fist
+[01.01.2024 01:14:03 | INFO]: Recognize Thumb_Down
+[01.01.2024 01:14:05 | INFO]: Recognize Closed_Fist
+[01.01.2024 01:14:10 | INFO]: Recognize Pointing_Up
+[01.01.2024 01:14:21 | INFO]: Recognize Thumb_Up
+[01.01.2024 01:14:39 | INFO]: Recognize Thumb_Down
+[01.01.2024 01:14:58 | INFO]: Recognize Thumb_Up
+[01.01.2024 01:16:34 | INFO]: Recognize Closed_Fist
+[01.01.2024 01:16:39 | INFO]: Recognize Thumb_Up
+[01.01.2024 01:24:36 | INFO]: Recognize Open_Palm
+[01.01.2024 01:24:41 | INFO]: Recognize Thumb_Up
+[01.01.2024 01:25:15 | INFO]: Recognize Open_Palm
+[01.01.2024 01:27:00 | INFO]: Recognize Thumb_Up
+[01.01.2024 01:32:24 | INFO]: Recognize Thumb_Down
+[01.01.2024 01:32:28 | INFO]: Recognize Thumb_Up
+[01.01.2024 01:34:51 | INFO]: Recognize Thumb_Down
+[01.01.2024 01:35:54 | INFO]: Recognize Thumb_Up
+[01.01.2024 01:37:48 | INFO]: Recognize Open_Palm
+[01.01.2024 01:38:10 | INFO]: Recognize Thumb_Up
+[01.01.2024 01:40:09 | INFO]: Recognize Thumb_Down
+[01.01.2024 01:40:41 | INFO]: Recognize Pointing_Up
+[01.01.2024 01:40:52 | INFO]: Recognize Thumb_Up
+[01.01.2024 01:40:56 | INFO]: Recognize Pointing_Up
+[01.01.2024 01:41:06 | INFO]: Recognize Thumb_Up
+[01.01.2024 01:41:13 | INFO]: Recognize Pointing_Up
+[01.01.2024 01:41:25 | INFO]: Recognize Thumb_Up
+[01.01.2024 01:41:56 | INFO]: Recognize Pointing_Up
+[01.01.2024 01:42:25 | INFO]: Recognize Thumb_Up
+[01.01.2024 01:46:46 | INFO]: Recognize Open_Palm
+[01.01.2024 01:46:54 | INFO]: Recognize Closed_Fist
+[01.01.2024 01:46:56 | INFO]: Recognize Open_Palm
+[01.01.2024 01:47:12 | INFO]: Recognize Pointing_Up
+[01.01.2024 01:47:14 | INFO]: Recognize Open_Palm
+[01.01.2024 01:47:16 | INFO]: Recognize Thumb_Up
+[01.01.2024 01:47:19 | INFO]: Recognize Closed_Fist
+[01.01.2024 01:47:30 | INFO]: Recognize Open_Palm
+[01.01.2024 01:47:37 | INFO]: Recognize Pointing_Up
+[01.01.2024 01:47:40 | INFO]: Recognize Open_Palm
+[01.01.2024 01:47:42 | INFO]: Recognize Pointing_Up
+[01.01.2024 01:47:47 | INFO]: Recognize Open_Palm
+[01.01.2024 01:47:54 | INFO]: Recognize Thumb_Up
+[01.01.2024 01:58:47 | INFO]: Recognize Thumb_Down
+[01.01.2024 02:01:20 | INFO]: Recognize Thumb_Up
+[01.01.2024 02:02:37 | INFO]: Recognize Thumb_Down
+[01.01.2024 02:02:59 | INFO]: Recognize Thumb_Up
+[01.01.2024 02:03:49 | INFO]: Recognize Open_Palm
+[01.01.2024 02:04:27 | INFO]: Recognize Thumb_Down
+[01.01.2024 02:04:31 | INFO]: Recognize Thumb_Up
+[01.01.2024 02:05:45 | INFO]: Recognize Thumb_Down
+[01.01.2024 02:05:51 | INFO]: Recognize Thumb_Up
+[01.01.2024 02:05:53 | INFO]: Recognize Closed_Fist
+[01.01.2024 02:05:55 | INFO]: Recognize Thumb_Up
+[01.01.2024 02:06:04 | INFO]: Recognize Thumb_Down
+[01.01.2024 02:06:13 | INFO]: Recognize Thumb_Up
+[01.01.2024 02:09:27 | INFO]: Recognize Thumb_Down
+[01.01.2024 02:09:46 | INFO]: Recognize Thumb_Up
+[01.01.2024 02:14:53 | INFO]: Recognize Closed_Fist
+[01.01.2024 02:14:55 | INFO]: Recognize Thumb_Up
+[01.01.2024 02:15:05 | INFO]: Recognize Open_Palm
+[01.01.2024 02:15:10 | INFO]: Recognize Thumb_Up
+[01.01.2024 02:15:15 | INFO]: Recognize Open_Palm
+[01.01.2024 02:16:24 | INFO]: Recognize Pointing_Up
+[01.01.2024 02:17:27 | INFO]: Recognize Thumb_Down
+[01.01.2024 02:20:28 | INFO]: Recognize Open_Palm
+[01.01.2024 11:29:11 | INFO]: Recognize Thumb_Up
+[01.01.2024 11:34:19 | INFO]: Recognize Pointing_Up
+[01.01.2024 11:34:40 | INFO]: Recognize Closed_Fist

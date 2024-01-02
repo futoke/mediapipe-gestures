@@ -1,0 +1,5 @@
+mediapipe 
+requests
+websockets
+hypercorn
+fastapi

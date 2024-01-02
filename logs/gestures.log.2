@@ -1,0 +1,474 @@
+[12.31.2023 14:12:01 | ERROR]: unhandled exception during asyncio.run() shutdown
+task: <Task finished name='Task-2' coro=<Lifespan.handle_lifespan() done, defined at /home/ichiro/.local/lib/python3.11/site-packages/hypercorn/asyncio/lifespan.py:31> exception=LifespanFailureError('Lifespan failure in startup. \'Traceback (most recent call last):\n  File "/usr/lib/python3.11/asyncio/tasks.py", line 490, in wait_for\n    return fut.result()\n           ^^^^^^^^^^^^\n  File "/usr/lib/python3.11/asyncio/locks.py", line 213, in wait\n    await fut\nasyncio.exceptions.CancelledError\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File "/home/ichiro/.local/lib/python3.11/site-packages/hypercorn/asyncio/lifespan.py", line 76, in wait_for_startup\n    await asyncio.wait_for(self.startup.wait(), timeout=self.config.startup_timeout)\n  File "/usr/lib/python3.11/asyncio/tasks.py", line 492, in wait_for\n    raise exceptions.TimeoutError() from exc\nTimeoutError\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File "/home/ichiro/.local/lib/python3.11/site-packages/hypercorn/asyncio/run.py", line 214, in _run\n    runner.run(main(shutdown_trigger=shutdown_trigger))\n  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run\n    return self._loop.run_until_complete(task)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3.11/asyncio/base_events.py", line 653, in run_until_complete\n    return future.result()\n           ^^^^^^^^^^^^^^^\n  File "/home/ichiro/.local/lib/python3.11/site-packages/hypercorn/asyncio/run.py", line 73, in worker_serve\n    await lifespan.wait_for_startup()\n  File "/home/ichiro/.local/lib/python3.11/site-packages/hypercorn/asyncio/lifespan.py", line 78, in wait_for_startup\n    raise LifespanTimeoutError("startup") from error\nhypercorn.utils.LifespanTimeoutError: Timeout whilst awaiting startup. Your application may not support the ASGI Lifespan protocol correctly, alternatively the startup_timeout configuration is incorrect.\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File "/home/ichiro/.local/lib/python3.11/site-packages/starlette/routing.py", line 705, in lifespan\n    async with self.lifespan_context(app) as maybe_state:\n  File "/home/ichiro/.local/lib/python3.11/site-packages/starlette/routing.py", line 584, in __aenter__\n    await self._router.startup()\n  File "/home/ichiro/.local/lib/python3.11/site-packages/starlette/routing.py", line 682, in startup\n    await handler()\n  File "/home/ichiro/docker-gestures/mediapipe/main.py", line 180, in start_db\n    await task\n  File "/home/ichiro/docker-gestures/mediapipe/main.py", line 125, in bg_worker\n    await asyncio.sleep(10)\n  File "/usr/lib/python3.11/asyncio/tasks.py", line 639, in sleep\n    return await future\n           ^^^^^^^^^^^^\nasyncio.exceptions.CancelledError\n\'')>
+Traceback (most recent call last):
+  File "/usr/lib/python3.11/asyncio/tasks.py", line 490, in wait_for
+    return fut.result()
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/locks.py", line 213, in wait
+    await fut
+asyncio.exceptions.CancelledError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ichiro/.local/lib/python3.11/site-packages/hypercorn/asyncio/lifespan.py", line 76, in wait_for_startup
+    await asyncio.wait_for(self.startup.wait(), timeout=self.config.startup_timeout)
+  File "/usr/lib/python3.11/asyncio/tasks.py", line 492, in wait_for
+    raise exceptions.TimeoutError() from exc
+TimeoutError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ichiro/.local/lib/python3.11/site-packages/hypercorn/asyncio/run.py", line 214, in _run
+    runner.run(main(shutdown_trigger=shutdown_trigger))
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 653, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/home/ichiro/.local/lib/python3.11/site-packages/hypercorn/asyncio/run.py", line 73, in worker_serve
+    await lifespan.wait_for_startup()
+  File "/home/ichiro/.local/lib/python3.11/site-packages/hypercorn/asyncio/lifespan.py", line 78, in wait_for_startup
+    raise LifespanTimeoutError("startup") from error
+hypercorn.utils.LifespanTimeoutError: Timeout whilst awaiting startup. Your application may not support the ASGI Lifespan protocol correctly, alternatively the startup_timeout configuration is incorrect.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ichiro/.local/lib/python3.11/site-packages/starlette/routing.py", line 705, in lifespan
+    async with self.lifespan_context(app) as maybe_state:
+  File "/home/ichiro/.local/lib/python3.11/site-packages/starlette/routing.py", line 584, in __aenter__
+    await self._router.startup()
+  File "/home/ichiro/.local/lib/python3.11/site-packages/starlette/routing.py", line 682, in startup
+    await handler()
+  File "/home/ichiro/docker-gestures/mediapipe/main.py", line 180, in start_db
+    await task
+  File "/home/ichiro/docker-gestures/mediapipe/main.py", line 125, in bg_worker
+    await asyncio.sleep(10)
+  File "/usr/lib/python3.11/asyncio/tasks.py", line 639, in sleep
+    return await future
+           ^^^^^^^^^^^^
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ichiro/.local/lib/python3.11/site-packages/hypercorn/asyncio/lifespan.py", line 43, in handle_lifespan
+    await self.app(
+  File "/home/ichiro/.local/lib/python3.11/site-packages/hypercorn/app_wrappers.py", line 33, in __call__
+    await self.app(scope, receive, send)
+  File "/home/ichiro/.local/lib/python3.11/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/ichiro/.local/lib/python3.11/site-packages/starlette/applications.py", line 116, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/ichiro/.local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 151, in __call__
+    await self.app(scope, receive, send)
+  File "/home/ichiro/.local/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 48, in __call__
+    await self.app(scope, receive, send)
+  File "/home/ichiro/.local/lib/python3.11/site-packages/starlette/routing.py", line 735, in __call__
+    await self.lifespan(scope, receive, send)
+  File "/home/ichiro/.local/lib/python3.11/site-packages/starlette/routing.py", line 720, in lifespan
+    await send({"type": "lifespan.startup.failed", "message": exc_text})
+  File "/home/ichiro/.local/lib/python3.11/site-packages/hypercorn/asyncio/lifespan.py", line 101, in asgi_send
+    raise LifespanFailureError("startup", message.get("message", ""))
+hypercorn.utils.LifespanFailureError: Lifespan failure in startup. 'Traceback (most recent call last):
+  File "/usr/lib/python3.11/asyncio/tasks.py", line 490, in wait_for
+    return fut.result()
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/locks.py", line 213, in wait
+    await fut
+asyncio.exceptions.CancelledError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ichiro/.local/lib/python3.11/site-packages/hypercorn/asyncio/lifespan.py", line 76, in wait_for_startup
+    await asyncio.wait_for(self.startup.wait(), timeout=self.config.startup_timeout)
+  File "/usr/lib/python3.11/asyncio/tasks.py", line 492, in wait_for
+    raise exceptions.TimeoutError() from exc
+TimeoutError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ichiro/.local/lib/python3.11/site-packages/hypercorn/asyncio/run.py", line 214, in _run
+    runner.run(main(shutdown_trigger=shutdown_trigger))
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 653, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/home/ichiro/.local/lib/python3.11/site-packages/hypercorn/asyncio/run.py", line 73, in worker_serve
+    await lifespan.wait_for_startup()
+  File "/home/ichiro/.local/lib/python3.11/site-packages/hypercorn/asyncio/lifespan.py", line 78, in wait_for_startup
+    raise LifespanTimeoutError("startup") from error
+hypercorn.utils.LifespanTimeoutError: Timeout whilst awaiting startup. Your application may not support the ASGI Lifespan protocol correctly, alternatively the startup_timeout configuration is incorrect.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ichiro/.local/lib/python3.11/site-packages/starlette/routing.py", line 705, in lifespan
+    async with self.lifespan_context(app) as maybe_state:
+  File "/home/ichiro/.local/lib/python3.11/site-packages/starlette/routing.py", line 584, in __aenter__
+    await self._router.startup()
+  File "/home/ichiro/.local/lib/python3.11/site-packages/starlette/routing.py", line 682, in startup
+    await handler()
+  File "/home/ichiro/docker-gestures/mediapipe/main.py", line 180, in start_db
+    await task
+  File "/home/ichiro/docker-gestures/mediapipe/main.py", line 125, in bg_worker
+    await asyncio.sleep(10)
+  File "/usr/lib/python3.11/asyncio/tasks.py", line 639, in sleep
+    return await future
+           ^^^^^^^^^^^^
+asyncio.exceptions.CancelledError
+'
+[12.31.2023 14:14:59 | INFO]: Running on http://0.0.0.0:8005 (CTRL + C to quit)
+[12.31.2023 14:14:59 | ERROR]: Task exception was never retrieved
+future: <Task finished name='Task-4' coro=<bg_worker() done, defined at /home/ichiro/docker-gestures/mediapipe/main.py:106> exception=ConnectionRefusedError(111, "Connect call failed ('127.0.0.1', 8002)")>
+Traceback (most recent call last):
+  File "/home/ichiro/docker-gestures/mediapipe/main.py", line 110, in bg_worker
+    async with websockets.connect(STREAM_URL, ping_interval=None) as ws:
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/client.py", line 629, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/client.py", line 647, in __await_impl_timeout__
+    return await self.__await_impl__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/client.py", line 651, in __await_impl__
+    _transport, _protocol = await self._create_connection()
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1085, in create_connection
+    raise exceptions[0]
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1069, in create_connection
+    sock = await self._connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 973, in _connect_sock
+    await self.sock_connect(sock, address)
+  File "/usr/lib/python3.11/asyncio/selector_events.py", line 634, in sock_connect
+    return await fut
+           ^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/selector_events.py", line 674, in _sock_connect_cb
+    raise OSError(err, f'Connect call failed {address}')
+ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 8002)
+[12.31.2023 14:19:29 | INFO]: Running on http://0.0.0.0:8005 (CTRL + C to quit)
+[12.31.2023 14:19:29 | ERROR]: No connection to video stream server (ws://localhost:8002/websocket)
+[12.31.2023 14:19:39 | ERROR]: No connection to video stream server (ws://localhost:8002/websocket)
+[12.31.2023 14:19:49 | ERROR]: No connection to video stream server (ws://localhost:8002/websocket)
+[12.31.2023 14:20:14 | INFO]: Running on http://0.0.0.0:8005 (CTRL + C to quit)
+[12.31.2023 14:20:14 | ERROR]: Task exception was never retrieved
+future: <Task finished name='Task-4' coro=<bg_worker() done, defined at /home/ichiro/docker-gestures/mediapipe/main.py:106> exception=AttributeError("'Connect' object has no attribute 'recv'")>
+Traceback (most recent call last):
+  File "/home/ichiro/docker-gestures/mediapipe/main.py", line 115, in bg_worker
+    msg = await ws.recv()
+                ^^^^^^^
+AttributeError: 'Connect' object has no attribute 'recv'
+[12.31.2023 14:20:42 | INFO]: Running on http://0.0.0.0:8005 (CTRL + C to quit)
+[12.31.2023 14:20:44 | INFO]: Thumb_Up
+[12.31.2023 14:20:45 | INFO]: Open_Palm
+[12.31.2023 14:20:46 | INFO]: Thumb_Up
+[12.31.2023 14:21:17 | INFO]: Running on http://0.0.0.0:8005 (CTRL + C to quit)
+[12.31.2023 14:21:19 | INFO]: Thumb_Up
+[12.31.2023 14:21:20 | INFO]: Closed_Fist
+[12.31.2023 14:21:20 | INFO]: Open_Palm
+[12.31.2023 14:21:21 | INFO]: Thumb_Up
+[12.31.2023 14:21:22 | INFO]: Closed_Fist
+[12.31.2023 14:21:22 | INFO]: Thumb_Up
+[12.31.2023 14:21:23 | INFO]: Open_Palm
+[12.31.2023 14:21:27 | ERROR]: Task exception was never retrieved
+future: <Task finished name='Task-4' coro=<bg_worker() done, defined at /home/ichiro/docker-gestures/mediapipe/main.py:106> exception=ConnectionClosedError(None, None, None)>
+Traceback (most recent call last):
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/protocol.py", line 963, in transfer_data
+    message = await self.read_message()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/protocol.py", line 1033, in read_message
+    frame = await self.read_data_frame(max_size=self.max_size)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/protocol.py", line 1108, in read_data_frame
+    frame = await self.read_frame(max_size)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/protocol.py", line 1165, in read_frame
+    frame = await Frame.read(
+            ^^^^^^^^^^^^^^^^^
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/framing.py", line 68, in read
+    data = await reader(2)
+           ^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/streams.py", line 727, in readexactly
+    raise exceptions.IncompleteReadError(incomplete, n)
+asyncio.exceptions.IncompleteReadError: 0 bytes read on a total of 2 expected bytes
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ichiro/docker-gestures/mediapipe/main.py", line 115, in bg_worker
+    msg = await ws.recv()
+          ^^^^^^^^^^^^^^^
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/protocol.py", line 568, in recv
+    await self.ensure_open()
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/protocol.py", line 939, in ensure_open
+    raise self.connection_closed_exc()
+websockets.exceptions.ConnectionClosedError: no close frame received or sent
+[12.31.2023 14:23:08 | INFO]: Running on http://0.0.0.0:8005 (CTRL + C to quit)
+[12.31.2023 14:23:08 | ERROR]: Task exception was never retrieved
+future: <Task finished name='Task-4' coro=<bg_worker() done, defined at /home/ichiro/docker-gestures/mediapipe/main.py:106> exception=ConnectionRefusedError(111, "Connect call failed ('127.0.0.1', 8002)")>
+Traceback (most recent call last):
+  File "/home/ichiro/docker-gestures/mediapipe/main.py", line 126, in bg_worker
+    async with websocket as ws:
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/client.py", line 629, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/client.py", line 647, in __await_impl_timeout__
+    return await self.__await_impl__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/client.py", line 651, in __await_impl__
+    _transport, _protocol = await self._create_connection()
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1085, in create_connection
+    raise exceptions[0]
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1069, in create_connection
+    sock = await self._connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 973, in _connect_sock
+    await self.sock_connect(sock, address)
+  File "/usr/lib/python3.11/asyncio/selector_events.py", line 634, in sock_connect
+    return await fut
+           ^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/selector_events.py", line 674, in _sock_connect_cb
+    raise OSError(err, f'Connect call failed {address}')
+ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 8002)
+[12.31.2023 14:23:49 | ERROR]: Task exception was never retrieved
+future: <Task finished name='Task-4' coro=<bg_worker() done, defined at /home/ichiro/docker-gestures/mediapipe/main.py:106> exception=TypeError("'Connect' object does not support the context manager protocol")>
+Traceback (most recent call last):
+  File "/home/ichiro/docker-gestures/mediapipe/main.py", line 126, in bg_worker
+    with websocket as ws:
+TypeError: 'Connect' object does not support the context manager protocol
+[12.31.2023 14:23:49 | INFO]: Running on http://0.0.0.0:8005 (CTRL + C to quit)
+[12.31.2023 14:24:38 | ERROR]: Task exception was never retrieved
+future: <Task finished name='Task-4' coro=<bg_worker() done, defined at /home/ichiro/docker-gestures/mediapipe/main.py:106> exception=TypeError("'Connect' object does not support the context manager protocol")>
+Traceback (most recent call last):
+  File "/home/ichiro/docker-gestures/mediapipe/main.py", line 126, in bg_worker
+    with websocket as ws:
+TypeError: 'Connect' object does not support the context manager protocol
+[12.31.2023 14:24:38 | INFO]: Running on http://0.0.0.0:8005 (CTRL + C to quit)
+[12.31.2023 14:24:52 | INFO]: Running on http://0.0.0.0:8005 (CTRL + C to quit)
+[12.31.2023 14:24:55 | INFO]: Thumb_Up
+[12.31.2023 14:24:56 | INFO]: Open_Palm
+[12.31.2023 14:24:57 | INFO]: Thumb_Up
+[12.31.2023 14:24:58 | INFO]: Open_Palm
+[12.31.2023 14:25:03 | INFO]: Running on http://0.0.0.0:8005 (CTRL + C to quit)
+[12.31.2023 14:25:04 | INFO]: Open_Palm
+[12.31.2023 14:25:05 | INFO]: Thumb_Up
+[12.31.2023 14:25:06 | INFO]: Open_Palm
+[12.31.2023 14:25:07 | INFO]: Thumb_Up
+[12.31.2023 14:25:12 | ERROR]: Task exception was never retrieved
+future: <Task finished name='Task-4' coro=<bg_worker() done, defined at /home/ichiro/docker-gestures/mediapipe/main.py:106> exception=ConnectionClosedError(None, None, None)>
+Traceback (most recent call last):
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/protocol.py", line 963, in transfer_data
+    message = await self.read_message()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/protocol.py", line 1033, in read_message
+    frame = await self.read_data_frame(max_size=self.max_size)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/protocol.py", line 1108, in read_data_frame
+    frame = await self.read_frame(max_size)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/protocol.py", line 1165, in read_frame
+    frame = await Frame.read(
+            ^^^^^^^^^^^^^^^^^
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/framing.py", line 68, in read
+    data = await reader(2)
+           ^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/streams.py", line 727, in readexactly
+    raise exceptions.IncompleteReadError(incomplete, n)
+asyncio.exceptions.IncompleteReadError: 0 bytes read on a total of 2 expected bytes
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ichiro/docker-gestures/mediapipe/main.py", line 129, in bg_worker
+    msg = await ws.recv()
+          ^^^^^^^^^^^^^^^
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/protocol.py", line 568, in recv
+    await self.ensure_open()
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/protocol.py", line 939, in ensure_open
+    raise self.connection_closed_exc()
+websockets.exceptions.ConnectionClosedError: no close frame received or sent
+[12.31.2023 14:26:02 | INFO]: Running on http://0.0.0.0:8005 (CTRL + C to quit)
+[12.31.2023 14:26:02 | ERROR]: Task exception was never retrieved
+future: <Task finished name='Task-4' coro=<bg_worker() done, defined at /home/ichiro/docker-gestures/mediapipe/main.py:106> exception=ConnectionRefusedError(111, "Connect call failed ('127.0.0.1', 8002)")>
+Traceback (most recent call last):
+  File "/home/ichiro/docker-gestures/mediapipe/main.py", line 110, in bg_worker
+    async with websockets.connect(STREAM_URL, ping_interval=None) as ws:
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/client.py", line 629, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/client.py", line 647, in __await_impl_timeout__
+    return await self.__await_impl__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/client.py", line 651, in __await_impl__
+    _transport, _protocol = await self._create_connection()
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1085, in create_connection
+    raise exceptions[0]
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1069, in create_connection
+    sock = await self._connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 973, in _connect_sock
+    await self.sock_connect(sock, address)
+  File "/usr/lib/python3.11/asyncio/selector_events.py", line 634, in sock_connect
+    return await fut
+           ^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/selector_events.py", line 674, in _sock_connect_cb
+    raise OSError(err, f'Connect call failed {address}')
+ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 8002)
+[12.31.2023 14:37:47 | INFO]: Running on http://0.0.0.0:8888 (CTRL + C to quit)
+[12.31.2023 14:37:49 | INFO]: Open_Palm
+[12.31.2023 14:37:50 | INFO]: Thumb_Up
+[12.31.2023 14:37:52 | INFO]: Pointing_Up
+[12.31.2023 14:37:56 | ERROR]: No connection to video stream server (ws://localhost:8002/websocket)
+[12.31.2023 14:38:06 | ERROR]: No connection to video stream server (ws://localhost:8002/websocket)
+[12.31.2023 14:38:16 | ERROR]: No connection to video stream server (ws://localhost:8002/websocket)
+[12.31.2023 14:38:26 | ERROR]: No connection to video stream server (ws://localhost:8002/websocket)
+[12.31.2023 14:38:36 | ERROR]: No connection to video stream server (ws://localhost:8002/websocket)
+[12.31.2023 14:38:46 | ERROR]: No connection to video stream server (ws://localhost:8002/websocket)
+[12.31.2023 14:39:03 | INFO]: Running on http://0.0.0.0:8888 (CTRL + C to quit)
+[12.31.2023 14:39:05 | INFO]: Thumb_Up
+[12.31.2023 14:39:06 | INFO]: Pointing_Up
+[12.31.2023 14:39:07 | INFO]: Closed_Fist
+[12.31.2023 14:39:11 | ERROR]: No connection to video stream server (ws://localhost:8002/websocket)
+[12.31.2023 14:40:43 | INFO]: Running on http://0.0.0.0:8888 (CTRL + C to quit)
+[12.31.2023 14:40:45 | INFO]: Thumb_Up
+[12.31.2023 14:40:46 | INFO]: Pointing_Up
+[12.31.2023 14:40:47 | INFO]: Open_Palm
+[12.31.2023 14:40:52 | ERROR]: Task exception was never retrieved
+future: <Task finished name='Task-4' coro=<bg_worker() done, defined at /home/ichiro/docker-gestures/mediapipe/main.py:106> exception=InvalidMessage('did not receive a valid HTTP response')>
+Traceback (most recent call last):
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/http.py", line 120, in read_response
+    status_line = await read_line(stream)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/http.py", line 200, in read_line
+    raise EOFError("line without CRLF")
+EOFError: line without CRLF
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/client.py", line 139, in read_http_response
+    status_code, reason, headers = await read_response(self.reader)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/http.py", line 122, in read_response
+    raise EOFError("connection closed while reading HTTP status line") from exc
+EOFError: connection closed while reading HTTP status line
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ichiro/docker-gestures/mediapipe/main.py", line 111, in bg_worker
+    async with websockets.connect(STREAM_URL, ping_interval=None) as ws:
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/client.py", line 629, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/client.py", line 647, in __await_impl_timeout__
+    return await self.__await_impl__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/client.py", line 654, in __await_impl__
+    await protocol.handshake(
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/client.py", line 319, in handshake
+    status_code, response_headers = await self.read_http_response()
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/client.py", line 141, in read_http_response
+    raise InvalidMessage("did not receive a valid HTTP response") from exc
+websockets.exceptions.InvalidMessage: did not receive a valid HTTP response
+[12.31.2023 14:41:33 | INFO]: Running on http://0.0.0.0:8888 (CTRL + C to quit)
+[12.31.2023 14:41:33 | ERROR]: Task exception was never retrieved
+future: <Task finished name='Task-4' coro=<bg_worker() done, defined at /home/ichiro/docker-gestures/mediapipe/main.py:106> exception=ConnectionRefusedError(111, "Connect call failed ('127.0.0.1', 8002)")>
+Traceback (most recent call last):
+  File "/home/ichiro/docker-gestures/mediapipe/main.py", line 111, in bg_worker
+    async with websockets.connect(STREAM_URL, ping_interval=None) as ws:
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/client.py", line 629, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/client.py", line 647, in __await_impl_timeout__
+    return await self.__await_impl__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/client.py", line 651, in __await_impl__
+    _transport, _protocol = await self._create_connection()
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1085, in create_connection
+    raise exceptions[0]
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1069, in create_connection
+    sock = await self._connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 973, in _connect_sock
+    await self.sock_connect(sock, address)
+  File "/usr/lib/python3.11/asyncio/selector_events.py", line 634, in sock_connect
+    return await fut
+           ^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/selector_events.py", line 674, in _sock_connect_cb
+    raise OSError(err, f'Connect call failed {address}')
+ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 8002)
+[12.31.2023 14:41:56 | INFO]: Running on http://0.0.0.0:8888 (CTRL + C to quit)
+[12.31.2023 14:42:00 | INFO]: Thumb_Up
+[12.31.2023 14:42:01 | INFO]: Pointing_Up
+[12.31.2023 14:42:02 | INFO]: Open_Palm
+[12.31.2023 14:42:04 | INFO]: Thumb_Up
+[12.31.2023 14:42:09 | INFO]: Running on http://0.0.0.0:8888 (CTRL + C to quit)
+[12.31.2023 14:42:13 | ERROR]: No connection to video stream server (ws://localhost:8002/websocket)
+[12.31.2023 14:42:23 | ERROR]: Task exception was never retrieved
+future: <Task finished name='Task-4' coro=<bg_worker() done, defined at /home/ichiro/docker-gestures/mediapipe/main.py:106> exception=ConnectionRefusedError(111, "Connect call failed ('127.0.0.1', 8002)")>
+Traceback (most recent call last):
+  File "/home/ichiro/docker-gestures/mediapipe/main.py", line 111, in bg_worker
+    async with websockets.connect(STREAM_URL, ping_interval=None) as ws:
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/client.py", line 629, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/client.py", line 647, in __await_impl_timeout__
+    return await self.__await_impl__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/client.py", line 651, in __await_impl__
+    _transport, _protocol = await self._create_connection()
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1085, in create_connection
+    raise exceptions[0]
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1069, in create_connection
+    sock = await self._connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 973, in _connect_sock
+    await self.sock_connect(sock, address)
+  File "/usr/lib/python3.11/asyncio/selector_events.py", line 634, in sock_connect
+    return await fut
+           ^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/selector_events.py", line 674, in _sock_connect_cb
+    raise OSError(err, f'Connect call failed {address}')
+ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 8002)
+[12.31.2023 14:44:30 | INFO]: Running on http://0.0.0.0:8888 (CTRL + C to quit)
+[12.31.2023 14:44:30 | ERROR]: Task exception was never retrieved
+future: <Task finished name='Task-4' coro=<bg_worker() done, defined at /home/ichiro/docker-gestures/mediapipe/main.py:106> exception=ConnectionRefusedError(111, "Connect call failed ('127.0.0.1', 8002)")>
+Traceback (most recent call last):
+  File "/home/ichiro/docker-gestures/mediapipe/main.py", line 110, in bg_worker
+    async with websockets.connect(STREAM_URL, ping_interval=None) as ws:
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/client.py", line 629, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/client.py", line 647, in __await_impl_timeout__
+    return await self.__await_impl__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ichiro/.local/lib/python3.11/site-packages/websockets/legacy/client.py", line 651, in __await_impl__
+    _transport, _protocol = await self._create_connection()
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1085, in create_connection
+    raise exceptions[0]
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1069, in create_connection
+    sock = await self._connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 973, in _connect_sock
+    await self.sock_connect(sock, address)
+  File "/usr/lib/python3.11/asyncio/selector_events.py", line 634, in sock_connect
+    return await fut
+           ^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/selector_events.py", line 674, in _sock_connect_cb
+    raise OSError(err, f'Connect call failed {address}')
+ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 8002)
+[12.31.2023 14:47:13 | INFO]: Running on http://0.0.0.0:8888 (CTRL + C to quit)
