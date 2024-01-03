@@ -1,6 +1,2 @@
 /__pycache__
-/recognize.py
-/recognize_old.py
-/run.dat
-/ws_client.py
-/ws_server.py
+logs/

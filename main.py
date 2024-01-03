@@ -1,7 +1,6 @@
 # hypercorn main:app --bind 0.0.0.0:8005
-from socket import SocketIO
+import os
 import cv2
-import sys
 import json
 import time
 import base64
@@ -33,6 +32,9 @@ NUM_HANDS = 1
 MIN_HAND_DETECTION_CONFIDENCE = 0.5
 MIN_HAND_PRESENCE_CONFIDENCE = 0.5
 MIN_TRACKING_CONFIDENCE = 0.5
+
+if not os.path.exists("logs"):
+    os.makedirs("logs")
 
 log_file = RotatingFileHandler(
     'logs/gestures.log',
