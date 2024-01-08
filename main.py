@@ -1,13 +1,15 @@
 # hypercorn main:app --bind 0.0.0.0:8005
 import os
-import cv2
+import sys
 import json
 import time
 import base64
 import asyncio
-import requests
 import logging
 import websockets
+
+import cv2
+import requests
 
 import numpy as np
 import mediapipe as mp
@@ -41,7 +43,7 @@ log_file = RotatingFileHandler(
     maxBytes=32768, 
     backupCount=16
 )
-log_console = logging.StreamHandler()
+log_console = logging.StreamHandler(sys.setLogRecordFactory)
 
 logging.basicConfig(
     handlers=(log_file, log_console), 
