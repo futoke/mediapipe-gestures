@@ -153,7 +153,8 @@ async def bg_worker():
                     landmarks = recognition_result_list[0].hand_landmarks
                     category_name = gesture[0].category_name
 
-                    if category_name not in ("None", last_recognized["gesture"]):
+                    # if category_name not in ("None", last_recognized["gesture"]):
+                    if category_name != "None":    
                         try:
                             compare_triggers(category_name)
                         except (
