@@ -70,10 +70,10 @@ def compare_triggers(gesture):
     )
 
     triggers = []
-    while True:
-        if response.status_code == 200:
-            triggers = response.json()
-            break
+    # while True:
+    if response.status_code == 200:
+        triggers = response.json()
+            # break
     
     for trigger in triggers:
         trigger_id = trigger['id']
